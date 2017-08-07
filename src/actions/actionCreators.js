@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+export const updateCitiesList = (city) => {
+  return {
+    type: 'UPDATE_CITIES_LIST',
+    payload: city
+  };
+};
+
 export const setAPIData = (apiData) => {
   return {
     type: 'SET_API_DATA',
@@ -24,9 +31,11 @@ export const getAPIData = (city) => {
   };
 };
 
-export const updateCitiesList = (city) => {
+export const removeCity = (city) => {
   return {
-    type: 'UPDATE_CITIES_LIST',
+    type: 'REMOVE_CITY',
     payload: city
   };
 };
+
+

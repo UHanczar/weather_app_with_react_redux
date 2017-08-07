@@ -12,7 +12,6 @@ console.log('store', store.getState());
 
 const App = () => (
   <div>
-    Hello, React!
     <Container />
   </div>
 );

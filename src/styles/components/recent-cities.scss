@@ -1,0 +1,20 @@
+.recent-cities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: brown; // then delete
+  
+  .city {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: yellow;
+    width: 300px;
+    padding: 10px 5px;
+    
+    .btn-remove {
+      margin-left: auto;
+    }
+  }
+}
