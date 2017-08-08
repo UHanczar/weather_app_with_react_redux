@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import axios from 'axios';
 
-import { getAPIData, updateCitiesList } from './../actions/actionCreators';
+import { getAPIData } from './../actions/actionCreators';
 
 import WeatherData from './WeatherData';
 
@@ -13,7 +13,6 @@ class CurrentWeather extends Component {
   }
 
   handleWeather(e) {
-    // e.preventDefault();
     if (e.key === 'Enter') {
       const city = this.rootNode.value;
       this.rootNode.value = '';
@@ -22,14 +21,24 @@ class CurrentWeather extends Component {
   }
 
   render() {
-    const { isLoading } = this.props.weather;
+    const { isLoading, errorMessage } = this.props.weather;
+
+    const renderData = () => {
+      if (isLoading) {
+        return (<WeatherData data={this.props.weather.data} />);
+      } else if (errorMessage) {
+        return (<div className='weather-data'>There is no city with this name. Check city's name and try again.</div>);
+      } else {
+        return (<div></div>)
+      }
+    };
     return (
       <div className='current-weather'>
-          <div className='current-weather-card'>
-            <h2>Get weather</h2>
-            <input type='text' placeholder='Search weather by city' ref={node => this.rootNode = node} onKeyPress={this.handleWeather} />
-            {isLoading ? <WeatherData data={this.props.weather.data} /> : <div></div>}
-          </div>
+        <div className='current-weather-card'>
+          <h2>Get weather</h2>
+          <input type='text' placeholder='Search weather by city' ref={node => this.rootNode = node} onKeyPress={this.handleWeather} />
+          {renderData()}
+        </div>
       </div>
     );
   }
@@ -42,12 +51,21 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getWeather(val) {
     console.log(val);
     dispatch(getAPIData(val));
     // dispatch(updateCitiesList(val));
   }
 });
+
+CurrentWeather.propTypes = {
+  weather: PropTypes.shape({
+    data: PropTypes.object.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.isRequired
+  }).isRequired,
+  getWeather: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentWeather);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import { getAPIData, removeCity } from './../actions/actionCreators';
 
@@ -9,11 +9,11 @@ import RenderCities from './RenderCities';
 class RecentCities extends Component {
   constructor(props) {
     super(props);
-    
+
     this.handleWeatherFromCity = this.handleWeatherFromCity.bind(this);
     this.handleRemoveCity = this.handleRemoveCity.bind(this);
   }
-  
+
   handleWeatherFromCity(city) {
     this.props.getWeather(city);
   }
@@ -53,5 +53,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getAPIData(val));
   }
 });
+
+RecentCities.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  deleteCity: PropTypes.func.isRequired,
+  getWeather: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecentCities);

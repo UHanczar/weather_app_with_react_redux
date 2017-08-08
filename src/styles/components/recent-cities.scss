@@ -6,7 +6,7 @@
   align-items: center;
   padding: 20px 0;
   text-align: center;
-  color: #1468A0;
+  color: $cities_font-color;
   
   @media (max-width: 48rem) {
     display: none;
@@ -25,7 +25,6 @@
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
-      // background-color: yellow;
       width: auto;
       font-size: 1.2rem;
       cursor: pointer;
@@ -33,27 +32,28 @@
       padding-left: 10px;
       
       .city-link {
-        width: 100%;
         min-height: 100%;
+        width: 100%;
         padding: 20px 5px;
         text-align: left;
       }
       
-      .btn-remove {
-        margin-left: auto;
+      .btn-remove {  
         background-color: transparent;
-        color: #1468A0;
+        color: $cities_font-color;
         cursor: pointer;
+        font-size: 2.5rem;
+        margin-left: auto;
         opacity: 0;
         transform: rotate(45deg);
-        font-size: 2.5rem;
+        
       }
       
       &:hover {
-        animation: city-hover 0.5s forwards ease-in-out;
+        animation: city-hover .5s forwards ease-in-out;
         
         .btn-remove {
-          animation: block-appear 0.5s forwards ease-in-out;
+          animation: block-appear .5s forwards ease-in-out;
         }
       }
 
