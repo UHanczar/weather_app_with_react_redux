@@ -1,3 +1,5 @@
+import { getCityList, setCityList } from './../helpers/helpers';
+
 const initialState = {
   list: []
 };
@@ -13,8 +15,11 @@ export const getCitiesList = (state = initialState, action) => {
       }
     case 'REMOVE_CITY':
       let newList = state.list.filter(city => city !== action.payload);
+      console.log('newList', newList);
       return Object.assign({}, state, { list: newList });
-      console.log('payload', action.type);
+      // console.log('payload', action.type);
+    case 'ADD_INITIAL_CITY_LIST':
+      return Object.assign({}, state, { list: action.payload });
     default:
       return state;
   }

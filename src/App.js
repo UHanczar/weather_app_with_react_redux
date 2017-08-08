@@ -5,10 +5,20 @@ import { Provider } from 'react-redux';
 import './styles/style.scss';
 
 import store from './store/store';
+import { setCityList, getCityList } from './helpers/helpers';
+import { addInitialCityList } from './actions/actionCreators';
 
 import Container from './components/Container';
 
-console.log('store', store.getState());
+store.subscribe(() => {
+  const state = store.getState();
+  console.log('New State', state);
+  setCityList(state.getCitiesList.list);
+});
+
+const initialCityList = getCityList();
+store.dispatch(addInitialCityList(initialCityList));
+console.log(initialCityList);
 
 const App = () => (
   <div>

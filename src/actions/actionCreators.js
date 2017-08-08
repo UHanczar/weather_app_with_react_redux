@@ -38,4 +38,10 @@ export const removeCity = (city) => {
   };
 };
 
+export const addInitialCityList = (cityList) => {
+  return {
+    type: 'ADD_INITIAL_CITY_LIST',
+    payload: cityList
+  }
+};
 
