@@ -10,7 +10,7 @@ export default {
   context: __dirname,
   entry: './src/App.js',
   output: {
-    path: path.join(__dirname, './public'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
   devServer: {
