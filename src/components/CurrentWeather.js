@@ -26,8 +26,8 @@ class CurrentWeather extends Component {
     return (
       <div className='current-weather'>
           <div className='current-weather-card'>
-            <h2>Get weather from your city</h2>
-            <input type='text' placeholder='Find a city' ref={node => this.rootNode = node} onKeyPress={this.handleWeather} />
+            <h2>Get weather</h2>
+            <input type='text' placeholder='Search weather by city' ref={node => this.rootNode = node} onKeyPress={this.handleWeather} />
             {isLoading ? <WeatherData data={this.props.weather.data} /> : <div></div>}
           </div>
       </div>

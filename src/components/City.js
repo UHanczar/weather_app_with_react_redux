@@ -2,13 +2,13 @@ import React from 'react';
 
 const City = (props) => (
   <div className='city'>
-    <div  onClick={() => props.findCityWeather(props.city)}>
+    <div  className='city-link' onClick={() => props.findCityWeather(props.city)}>
       <div>{props.city}</div>
     </div>
-    <button
+    <div
       className='btn-remove'
       onClick={() => props.removeCity(props.city)}
-    >Remove</button>
+    >+</div>
   </div>
 );
 

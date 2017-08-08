@@ -1,11 +1,17 @@
 .current-weather {
   width: 100%;
   min-height: 50vh;
-  background-color: green;
+  // background-color: green;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-top: 60px;
+  
+  h2 {
+    text-transform: capitalize;
+    padding-bottom: 2rem;
+  }
   
   .current-weather-card {
     display: flex;
@@ -13,14 +19,14 @@
     justify-content: center;
     align-items: center;
     width: 50%;
-    background-color: yellow; // then delete
+    height: auto;
     
     input {
       width: 300px;
-      height: 24px;
+      height: 34px;
       padding: 6px 12px;
       display: block;
-      font-size: 14px;
+      font-size: 18px;
       line-height: 1.42857143;
       color: #555;
       background-color: #fff;
@@ -32,6 +38,40 @@
       -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
       -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
       transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    }
+    
+    .weather-data {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      padding-top: 2rem;
+      
+      .weather-data-location,
+      .weather-data-temp,
+      .weather-data-desc {
+        padding: 1rem;
+      }
+      
+      .weather-data-desc {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+          width: 128px;
+          height: auto;
+        }
+      }
+      
+      .weather-data-date {
+        font-size: 1.5rem;
+      }
     }
   }
 }

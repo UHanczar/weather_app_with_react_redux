@@ -8,8 +8,8 @@ import RecentCities from './RecentCities';
 
 const Container = () => (
   <div className='container'>
-    <CurrentWeather />
     <RecentCities />
+    <CurrentWeather />
   </div>
 );
 

@@ -5,7 +5,7 @@ import City from './City';
 const RenderCities = (props) => {
   const citiesList = props.cities.slice().reverse();
   return (
-    <div>
+    <div className='city-list'>
       {citiesList.map(city => <City key={city} city={city} removeCity={props.removeCity} findCityWeather={props.findCityWeather} />)}
     </div>
   );

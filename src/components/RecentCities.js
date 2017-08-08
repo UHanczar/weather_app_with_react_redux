@@ -26,7 +26,7 @@ class RecentCities extends Component {
   render() {
     return (
       <div className='recent-cities'>
-        <h2>Or check among recent requests</h2>
+        <h3>recent requests</h3>
         <RenderCities
           cities={this.props.cities}
           findCityWeather={this.handleWeatherFromCity}
