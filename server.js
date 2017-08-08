@@ -1,4 +1,5 @@
 import express from 'express';
+import open from 'open';
 
 // environtment variable for heroku
 const PORT = process.env.PORT || 3000;
@@ -20,4 +21,7 @@ app.use((req, res, next) => {
 app.use(express.static('public'));
 
 // starting the server using port and callback function
-app.listen(process.env.PORT || 3000, () => console.log(`Express server is up on port 3000`));
+app.listen(PORT, () => {
+  console.log(`Express server is up on port 3000`);
+  open(`http://localhost:${PORT}`);
+});
