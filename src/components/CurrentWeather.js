@@ -21,10 +21,12 @@ class CurrentWeather extends Component {
   }
 
   render() {
-    const { isLoading, errorMessage } = this.props.weather;
+    const { isLoading, isLoaded, errorMessage } = this.props.weather;
 
     const renderData = () => {
       if (isLoading) {
+        return (<div className='loader'>Loading...</div>)
+      } else if (isLoaded) {
         return (<WeatherData data={this.props.weather.data} />);
       } else if (errorMessage) {
         return (<div className='weather-data'>There is no city with this name. Check city's name and try again.</div>);
@@ -63,6 +65,7 @@ CurrentWeather.propTypes = {
   weather: PropTypes.shape({
     data: PropTypes.object.isRequired,
     isLoading: PropTypes.bool.isRequired,
+    isLoaded: PropTypes.bool.isRequired,
     errorMessage: PropTypes.isRequired
   }).isRequired,
   getWeather: PropTypes.func.isRequired

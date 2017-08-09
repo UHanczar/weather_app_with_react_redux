@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SET_API_DATA, ADD_INITIAL_CITY_LIST, UPDATE_CITY_LIST, REMOVE_CITY, SET_ERROR_MESSAGE } from './actions';
+import { SET_API_DATA, ADD_INITIAL_CITY_LIST, UPDATE_CITY_LIST, REMOVE_CITY, SET_ERROR_MESSAGE, LOADING } from './actions';
 
 export const updateCitiesList = (city) => {
   return {
@@ -13,6 +13,13 @@ export const setAPIData = (apiData) => {
   return {
     type: SET_API_DATA,
     payload: apiData
+  };
+};
+
+const setLoading = () => {
+  return {
+    type: LOADING,
+    payload: true
   };
 };
 
@@ -29,6 +36,9 @@ export const getAPIData = (city) => {
     const path = `/data/2.5/weather`;
     const appId = `10398681c88c43794ad6ed5b9366ca29`;
     const query = `units=metric&lang=ru&appid=${appId}`;
+
+    dispatch(setLoading());
+
     axios
       .get(`${baseUrl}${path}?q=${city}&${query}`)
       .then((response) => {
