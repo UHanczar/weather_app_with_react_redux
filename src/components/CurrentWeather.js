@@ -29,7 +29,7 @@ class CurrentWeather extends Component {
       } else if (isLoaded) {
         return (<WeatherData data={this.props.weather.data} />);
       } else if (errorMessage) {
-        return (<div className='weather-data'>There is no city with this name. Check city's name and try again.</div>);
+        return (<div className='weather-data'>There is no city with this name. Check city&apos;s name and try again.</div>);
       } else {
         return (<div></div>)
       }
